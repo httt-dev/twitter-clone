@@ -1,4 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
+import { checkSchema } from 'express-validator'
+import { validate } from '~/utils/validation'
 
 // login middleware
 export const loginValidator = (req: Request, res: Response, next: NextFunction) => {
@@ -11,3 +13,61 @@ export const loginValidator = (req: Request, res: Response, next: NextFunction) 
 
   next()
 }
+
+export const registerValidator = validate(
+  checkSchema({
+    name: {
+      notEmpty: true,
+      isString: true,
+      isLength: {
+        options: {
+          min: 1,
+          max: 100
+        }
+      },
+      trim: true
+    },
+    email: {
+      notEmpty: true,
+      isEmail: true,
+      trim: true
+    },
+    password: {
+      notEmpty: true,
+      isString: true,
+      isLength: {
+        options: {
+          min: 6,
+          max: 50
+        }
+      }
+    },
+    confirm_password: {
+      notEmpty: true,
+      isString: true,
+      isLength: {
+        options: {
+          min: 6,
+          max: 50
+        }
+      },
+      custom: {
+        options: (value, { req }) => {
+          ///
+          if (value != req.body.password) {
+            throw new Error('Password confirmation does not match password')
+          }
+          return true
+        }
+      }
+    },
+    date_of_birth: {
+      isISO8601: {
+        options: {
+          strict: true,
+          strictSeparator: true
+        }
+      }
+    }
+  })
+)

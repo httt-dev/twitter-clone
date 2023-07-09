@@ -26,7 +26,7 @@ content-type: application/json
 
 {
     "name" : "hoa",
-    "email": "test8@gmail.com",
+    "email": "test9@gmail.com",
     "password": "Abc12345",
     "confirm_password": "Abc12345",
     "date_of_birth" : "2023-07-08T08:26:33.781Z"

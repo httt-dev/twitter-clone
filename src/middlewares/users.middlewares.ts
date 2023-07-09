@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { checkSchema } from 'express-validator'
+import usersService from '~/services/users.service'
 import { validate } from '~/utils/validation'
 
 // login middleware
@@ -27,11 +28,22 @@ export const registerValidator = validate(
       },
       trim: true
     },
+
     email: {
       notEmpty: true,
       isEmail: true,
-      trim: true
+      trim: true,
+      custom: {
+        options: async (value: string) => {
+          const isExisted = await usersService.isEmailExisted(value)
+          if (isExisted) {
+            throw new Error('Email already exists')
+          }
+          return isExisted
+        }
+      }
     },
+
     password: {
       notEmpty: true,
       isString: true,

@@ -19,5 +19,21 @@ export const USERS_MESSAGE = {
   CONFIRM_PASSWORD_MUST_BE_STRONG: 'Confirm password must be strong',
   DATE_OF_BIRTH_MUST_BE_ISO_8601: 'Date of birth must be ISO 8601',
   LOGIN_SUCCESS: 'Login success',
-  REGISTER_SUCCESS: 'Register success'
+  REGISTER_SUCCESS: 'Register success',
+  ACCESS_TOKEN_IS_REQUIRED: 'Access token is required',
+  REFRESH_TOKEN_IS_REQUIRED: 'Refresh token is required',
+  REFRESH_TOKEN_IS_INVALID: 'Refresh token is invalid',
+  USED_REFRESH_TOKEN_OR_NOT_EXIST: 'Used refresh token or not exist',
+  LOGOUT_SUCCESS: 'Logout success',
+  REFRESH_TOKEN_SUCCESS: 'Refresh token is successful',
+  EMAIL_VERIFY_TOKEN_IS_REQUIRED: 'Email verify token is required',
+  USER_NOT_FOUND: 'User not found',
+  EMAIL_ALREADY_VERIFY_BEFORE: 'Email already verified',
+  EMAIL_VERIFY_SUCCESS: 'Email verify successful',
+  RESEND_VERIFY_EMAIL_SUCCESS: 'Resend verify email successful',
+  CHECK_EMAIL_TO_RESET_PASSWORD: 'Check email to reset password',
+  FORGOT_PASSWORD_TOKEN_IS_REQUIRED: 'Forgot password token is required',
+  VERIFY_FORGOT_PASSWORD_SUCCESS: 'Verify forgot password token successfully',
+  INVALID_FORGOT_PASSWORD_TOKEN: 'Invalid password token',
+  RESET_PASSWORD_SUCCESS: 'Reset password successfully'
 } as const

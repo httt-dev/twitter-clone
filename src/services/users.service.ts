@@ -244,6 +244,21 @@ class UsersService {
       message: USERS_MESSAGE.RESET_PASSWORD_SUCCESS
     }
   }
+
+  // get profile information
+  async getMe(user_id: string) {
+    const user = await databaseService.users.findOne(
+      { _id: new ObjectId(user_id) },
+      {
+        projection: {
+          password: 0, // do not return password
+          email_verify_token: 0,
+          forgot_password_token: 0
+        }
+      }
+    )
+    return user
+  }
 }
 
 const usersService = new UsersService()
